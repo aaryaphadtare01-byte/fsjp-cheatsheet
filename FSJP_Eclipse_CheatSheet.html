@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet title="FSJP Practical Programs - Eclipse Cheat Sheet">
+  <intro>
+    <description>Use this guide to locate each Full Stack Java Programming practical file in Eclipse. Each step shows the exact relative path and the complete source code. Mark a step complete after you have copied the code into the indicated file. The source catalog does not contain Experiment 5.</description>
+  </intro>
+  <item title="Experiment_01_Classes_Objects — Class1.java">
+    <description>Experiment folder: Experiment_01_Classes_Objects. File path from the experiment root: Experiment_01_Classes_Objects/Class1.java. Language: java.
+
+Eclipse placement: Java files go under Java Resources &gt; src. For a classic Dynamic Web Project, web files go under WebContent and deployment descriptors under WebContent/WEB-INF. For Maven web projects, use src/main/webapp and src/main/webapp/WEB-INF.
+
+SOURCE CODE START
+public class Class1 {
+    private int n;
+    private String s;
+
+    public Class1() {
+        System.out.println("Default Constructor");
+        System.out.println("n=" + n + " s=" + s);
+    }
+
+    public void setN(int number) {
+        n = number;
+    }
+
+    public void setS(String text) {
+        s = text;
+    }
+
+    public int getN() {
+        return n;
+    }
+
+    public String getS() {
+        return s;
+    }
+
+    public static void main(String[] args) {
+        Class1 object = new Class1();
+        object.setN(12);
+        object.setS("Hello");
+
+        System.out.println("n=" + object.getN());
+        System.out.println("s=" + object.getS());
+    }
+}
+    
+SOURCE CODE END
+
+Copy the code between SOURCE CODE START and SOURCE CODE END into the file with the filename above.</description>
+    <onCompletion>Completed: Experiment_01_Classes_Objects/Class1.java</onCompletion>
+  </item>
+  <item title="Experiment_02_Overloading — Class2.java">
+    <description>Experiment folder: Experiment_02_Overloading. File path from the experiment root: Experiment_02_Overloading/Class2.java. Language: java.
+
+Eclipse placement: Java files go under Java Resources &gt; src. For a classic Dynamic Web Project, web files go under WebContent and deployment descriptors under WebContent/WEB-INF. For Maven web projects, use src/main/webapp and src/main/webapp/WEB-INF.
+
+SOURCE CODE START
+import java.util.Scanner;
+
+class Student {
+    String name;
+    int rollNo;
+    double marks;
+
+    public Student() {
+        System.out.println("Default Student Constructor");
+        System.out.println("Default values: name=" + name + ", rollNo=" + rollNo);
+    }
+
+    public Student(String name, int rollNo) {
+        this.name = name;
+        this.rollNo = rollNo;
+    }
+
+    public Student(String name, int rollNo, double marks) {
+        this.name = name;
+        this.rollNo = rollNo;
+        this.marks = marks;
+    }
+}
+
+class AreaCalculator {
+    public void area(int radius) {
+        System.out.println("Area of circle: " + (Math.PI * radius * radius));
+    }
+
+    public void area(int length, int breadth) {
+        System.out.println("Area of rectangle: " + (length * breadth));
+    }
+}
+
+public class Class2 {
+    public static void main(String[] args) {
+        Student student1 = new Student();
+        Student student2 = new Student("Akshay", 1);
+        Student student3 = new Student("Nilesh", 2, 90.2);
+
+        AreaCalculator calculator = new AreaCalculator();
+        calculator.area(10);
+        calculator.area(10, 20);
+
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Enter radius: ");
+            int radius = Integer.parseInt(scanner.nextLine());
+
+            System.out.print("Enter rectangle length: ");
+            int length = Integer.parseInt(scanner.nextLine());
+
+            System.out.print("Enter rectangle breadth: ");
+            int breadth = Integer.parseInt(scanner.nextLine());
+
+            calculator.area(radius);
+            calculator.area(length, breadth);
+        } catch (NumberFormatException exception) {
+            System.out.println("Please enter valid whole numbers.");
+        }
+    }
+}
+    
+SOURCE CODE END
+
+Copy the code between SOURCE CODE START and SOURCE CODE END into the file with the filename above.</description>
+    <onCompletion>Completed: Experiment_02_Overloading/Class2.java</onCompletion>
+  </item>
+  <item title="Experiment_03_Inheritance — CircleCylinder.java">
+    <description>Experiment folder: Experiment_03_Inheritance. File path from the experiment root: Experiment_03_Inheritance/CircleCylinder.java. Language: java.
+
+Eclipse placement: Java files go under Java Resources &gt; src. For a classic Dynamic Web Project, web files go under WebContent and deployment descriptors under WebContent/WEB-INF. For Maven web projects, use src/main/webapp and src/main/webapp/WEB-INF.
+
+SOURCE CODE START
+class Circle {
+    protected final float PI = 3.141f;
+    protected float radius;
+
+    Circle() {
+        this(1.0f);
+    }
+
+    Circle(float radius) {
+        this.radius = radius;
+    }
+
+    float getArea() {
+        return PI * radius * radius;
+    }
+}
+
+class Cylinder extends Circle {
+    private final float height;
+
+    Cylinder(float radius, float height) {
+        super(radius);
+        this.height = height;
+    }
+
+    @Override
+    float getArea() {
+        // Total surface area = 2*pi*r^2 + 2*pi*r*h
+        return 2 * super.getArea() + 2 * PI * radius * height;
+    }
+}
+
+public class CircleCylinder {
+    public static void main(String[] args) {
+        Circle circle = new Circle(1.5f);
+        System.out.println("The area of circle is: " + circle.getArea());
+
+        Cylinder cylinder = new Cylinder(1.5f, 3.5f);
+        System.out.println("The total surface area of cylinder is: " + cylinder.getArea());
+    }
+}
+    
+SOURCE CODE END
+
+Copy the code between SOURCE CODE START and SOURCE CODE END into the file with the filename above.</description>
+    <onCompletion>Completed: Experiment_03_Inheritance/CircleCylinder.java</onCompletion>
+  </item>
+  <item title="Experiment_03_ExceptionHandling — ExceptionHandlingDemo.java">
+    <description>Experiment folder: Experiment_03_ExceptionHandling. File path from the experiment root: Experiment_03_ExceptionHandling/ExceptionHandlingDemo.java. Language: java.
+
+Eclipse placement: Java files go under Java Resources &gt; src. For a classic Dynamic Web Project, web files go under WebContent and deployment descriptors under WebContent/WEB-INF. For Maven web projects, use src/main/webapp and src/main/webapp/WEB-INF.
+
+SOURCE CODE START
+public class ExceptionHandlingDemo {
+    public static void main(String[] args) {
+        method1();
+    }
+
+    static void method1() {
+        System.out.println("In Method 1, calling Method 2");
+        method2();
+        System.out.println("Returned from Method 2");
+    }
+
+    static void method2() {
+        System.out.println("In Method 2, calling Method 3");
+
+        try {
+            method3();
+        } catch (ArithmeticException exception) {
+            System.out.println("Arithmetic exception handled: " + exception);
+        } catch (Exception exception) {
+            System.out.println("Exception handled: " + exception.getMessage());
+        }
+
+        System.out.println("Returned from Method 3");
+    }
+
+    static void method3() {
+        System.out.println("In Method 3");
+        int numerator = 20;
+        int denominator = 0;
+        int result = numerator / denominator;
+        System.out.println("Method 3 exits with result: " + result);
+    }
+}
+    
+SOURCE CODE END
+
+Copy the code between SOURCE CODE START and SOURCE CODE END into the file with the filename above.</description>
+    <onCompletion>Completed: Experiment_03_ExceptionHandling/ExceptionHandlingDemo.java</onCompletion>
+  </item>
+  <item title="Experiment_04_GenericServlet — index.html">
+    <description>Experiment folder: Experiment_04_GenericServlet. File path from the experiment root: Experiment_04_GenericServlet/index.html. Language: html.
+
+Eclipse placement: Java files go under Java Resources &gt; src. For a classic Dynamic Web Project, web files go under WebContent and deployment descriptors under WebContent/WEB-INF. For Maven web projects, use src/main/webapp and src/main/webapp/WEB-INF.
+
+SOURCE CODE START
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Generic Servlet Demo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Generic Servlet Demo&lt;/h2&gt;
+    &lt;form action="SubmitForm" method="post"&gt;
+        &lt;label for="name1"&gt;Enter your name:&lt;/label&gt;
+        &lt;input type="text" id="name1" name="name1" required&gt;
+        &lt;button type="submit"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+    
+SOURCE CODE END
+
+Copy the code between SOURCE CODE START and SOURCE CODE END into the file with the filename above.</description>
+    <onCompletion>Completed: Experiment_04_GenericServlet/index.html</onCompletion>
+  </item>
+  <item title="Experiment_04_GenericServlet — MyGenericServlet.java">
+    <description>Experiment folder: Experiment_04_GenericServlet. File path from the experiment root: Experiment_04_GenericServlet/MyGenericServlet.java. Language: java.
+
+Eclipse placement: Java files go under Java Resources &gt; src. For a classic Dynamic Web Project, web files go under WebContent and deployment descriptors under WebContent/WEB-INF. For Maven web projects, use src/main/webapp and src/main/webapp/WEB-INF.
+
+SOURCE CODE START
+package com.ServletCode;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.GenericServlet;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+public class MyGenericServlet extends GenericServlet {
+    private static final long serialVersionUID = 1L;
+
+    @Override
+    public void service(ServletRequest request, ServletResponse response)
+            throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+
+        String name = request.getParameter("name1");
+        if (name == null || name.trim().isEmpty()) {
+            name = "Guest";
+        }
+
+        try (PrintWriter writer = response.getWriter()) {
+            writer.println("&lt;!DOCTYPE html&gt;");
+            writer.println("&lt;html&gt;&lt;head&gt;&lt;meta charset=\"UTF-8\"&gt;&lt;title&gt;Welcome&lt;/title&gt;&lt;/head&gt;&lt;body&gt;");
+            writer.println("&lt;h2&gt;Welcome " + escapeHtml(name) + "&lt;/h2&gt;");
+            writer.println("&lt;/body&gt;&lt;/html&gt;");
+        }
+    }
+
+    private String escapeHtml(String value) {
+        return value.replace("&amp;", "&amp;amp;")
+                    .replace("&lt;", "&amp;lt;")
+                    .replace("&gt;", "&amp;gt;")
+                    .replace("\"", "&amp;quot;")
+                    .replace("'", "&amp;#x27;");
+    }
+}
+    
+SOURCE CODE END
+
+Copy the code between SOURCE CODE START and SOURCE CODE END into the file with the filename above.</description>
+    <onCompletion>Completed: Experiment_04_GenericServlet/MyGenericServlet.java</onCompletion>
+  </item>
+  <item title="Experiment_04_GenericServlet — web.xml">
+    <description>Experiment folder: Experiment_04_GenericServlet. File path from the experiment root: Experiment_04_GenericServlet/WEB-INF/web.xml. Language: xml.
+
+Eclipse placement: Java files go under Java Resources &gt; src. For a classic Dynamic Web Project, web files go under WebContent and deployment descriptors under WebContent/WEB-INF. For Maven web projects, use src/main/webapp and src/main/webapp/WEB-INF.
+
+SOURCE CODE START
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0"&gt;
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;MyGenericServlet&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;com.ServletCode.MyGenericServlet&lt;/servlet-class&gt;
+    &lt;/servlet&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;MyGenericServlet&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/SubmitForm&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+    
+SOURCE CODE END
+
+Copy the code between SOURCE CODE START and SOURCE CODE END into the file with the filename above.</description>
+    <onCompletion>Completed: Experiment_04_GenericServlet/WEB-INF/web.xml</onCompletion>
+  </item>
+  <item title="Experiment_04_HttpServlet — index.html">
+    <description>Experiment folder: Experiment_04_HttpServlet. File path from the experiment root: Experiment_04_HttpServlet/index.html. Language: html.
+
+Eclipse placement: Java files go under Java Resources &gt; src. For a classic Dynamic Web Project, web files go under WebContent and deployment descriptors under WebContent/WEB-INF. For Maven web projects, use src/main/webapp and src/main/webapp/WEB-INF.
+
+SOURCE CODE START
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;HTTP Servlet Demo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;HTTP Servlet Demo&lt;/h2&gt;
+    &lt;form action="SubmitForm" method="post"&gt;
+        &lt;label for="name1"&gt;Enter your name:&lt;/label&gt;
+        &lt;input type="text" id="name1" name="name1" required&gt;
+        &lt;button type="submit"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+    
+SOURCE CODE END
+
+Copy the code between SOURCE CODE START and SOURCE CODE END into the file with the filename above.</description>
+    <onCompletion>Completed: Experiment_04_HttpServlet/index.html</onCompletion>
+  </item>
+  <item title="Experiment_04_HttpServlet — ServletLogin.java">
+    <description>Experiment folder: Experiment_04_HttpServlet. File path from the experiment root: Experiment_04_HttpServlet/ServletLogin.java. Language: java.
+
+Eclipse placement: Java files go under Java Resources &gt; src. For a classic Dynamic Web Project, web files go under WebContent and deployment descriptors under WebContent/WEB-INF. For Maven web projects, use src/main/webapp and src/main/webapp/WEB-INF.
+
+SOURCE CODE START
+package com.ServletCode;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class ServletLogin extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+
+        String name = request.getParameter("name1");
+        if (name == null || name.trim().isEmpty()) {
+            name = "Guest";
+        }
+
+        try (PrintWriter writer = response.getWriter()) {
+            writer.println("&lt;!DOCTYPE html&gt;");
+            writer.println("&lt;html&gt;&lt;head&gt;&lt;meta charset=\"UTF-8\"&gt;&lt;title&gt;Welcome&lt;/title&gt;&lt;/head&gt;&lt;body&gt;");
+            writer.println("&lt;h2&gt;Welcome " + escapeHtml(name) + "&lt;/h2&gt;");
+            writer.println("&lt;/body&gt;&lt;/html&gt;");
+        }
+    }
+
+    private String escapeHtml(String value) {
+        return value.replace("&amp;", "&amp;amp;")
+                    .replace("&lt;", "&amp;lt;")
+                    .replace("&gt;", "&amp;gt;")
+                    .replace("\"", "&amp;quot;")
+                    .replace("'", "&amp;#x27;");
+    }
+}
+    
+SOURCE CODE END
+
+Copy the code between SOURCE CODE START and SOURCE CODE END into the file with the filename above.</description>
+    <onCompletion>Completed: Experiment_04_HttpServlet/ServletLogin.java</onCompletion>
+  </item>
+  <item title="Experiment_04_HttpServlet — web.xml">
+    <description>Experiment folder: Experiment_04_HttpServlet. File path from the experiment root: Experiment_04_HttpServlet/WEB-INF/web.xml. Language: xml.
+
+Eclipse placement: Java files go under Java Resources &gt; src. For a classic Dynamic Web Project, web files go under WebContent and deployment descriptors under WebContent/WEB-INF. For Maven web projects, use src/main/webapp and src/main/webapp/WEB-INF.
+
+SOURCE CODE START
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0"&gt;
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;ServletLogin&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;com.ServletCode.ServletLogin&lt;/servlet-class&gt;
+    &lt;/servlet&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;ServletLogin&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/SubmitForm&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+    
+SOURCE CODE END
+
+Copy the code between SOURCE CODE START and SOURCE CODE END into the file with the filename above.</description>
+    <onCompletion>Completed: Experiment_04_HttpServlet/WEB-INF/web.xml</onCompletion>
+  </item>
+  <item title="Experiment_06_JSP — JSPObjects.jsp">
+    <description>Experiment folder: Experiment_06_JSP. File path from the experiment root: Experiment_06_JSP/JSPObjects.jsp. Language: jsp.
+
+Eclipse placement: Java files go under Java Resources &gt; src. For a classic Dynamic Web Project, web files go under WebContent and deployment descriptors under WebContent/WEB-INF. For Maven web projects, use src/main/webapp and src/main/webapp/WEB-INF.
+
+SOURCE CODE START
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %&gt;
+&lt;%!
+    private String escapeHtml(String value) {
+        return value.replace("&amp;", "&amp;amp;")
+                    .replace("&lt;", "&amp;lt;")
+                    .replace("&gt;", "&amp;gt;")
+                    .replace("\"", "&amp;quot;")
+                    .replace("'", "&amp;#x27;");
+    }
+%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;JSP Implicit and Explicit Objects&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;JSP Implicit Objects&lt;/h2&gt;
+    &lt;form method="get" action="JSPObjects.jsp"&gt;
+        &lt;label for="name"&gt;Enter your name:&lt;/label&gt;
+        &lt;input type="text" id="name" name="name" required&gt;
+        &lt;button type="submit"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+&lt;%
+    String name = request.getParameter("name");
+    if (name != null &amp;&amp; !name.trim().isEmpty()) {
+        session.setAttribute("username", name);
+        application.setAttribute("college", "ABC College");
+        pageContext.setAttribute("message", "Welcome to JSP");
+%&gt;
+    &lt;p&gt;Name: &lt;%= escapeHtml(name) %&gt;&lt;/p&gt;
+    &lt;p&gt;Servlet Name: &lt;%= escapeHtml(config.getServletName()) %&gt;&lt;/p&gt;
+    &lt;p&gt;Message: &lt;%= escapeHtml((String) pageContext.getAttribute("message")) %&gt;&lt;/p&gt;
+    &lt;p&gt;Session username: &lt;%= escapeHtml((String) session.getAttribute("username")) %&gt;&lt;/p&gt;
+    &lt;p&gt;Application college: &lt;%= escapeHtml((String) application.getAttribute("college")) %&gt;&lt;/p&gt;
+&lt;%
+    }
+    String studentName = new String("Prajakta");
+%&gt;
+    &lt;h2&gt;JSP Explicit Object&lt;/h2&gt;
+    &lt;p&gt;Student Name: &lt;%= escapeHtml(studentName) %&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+    
+SOURCE CODE END
+
+Copy the code between SOURCE CODE START and SOURCE CODE END into the file with the filename above.</description>
+    <onCompletion>Completed: Experiment_06_JSP/JSPObjects.jsp</onCompletion>
+  </item>
+  <item title="Experiment_07_Calculator — index.html">
+    <description>Experiment folder: Experiment_07_Calculator. File path from the experiment root: Experiment_07_Calculator/index.html. Language: html.
+
+Eclipse placement: Java files go under Java Resources &gt; src. For a classic Dynamic Web Project, web files go under WebContent and deployment descriptors under WebContent/WEB-INF. For Maven web projects, use src/main/webapp and src/main/webapp/WEB-INF.
+
+SOURCE CODE START
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Simple Calculator&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+    &lt;script src="script.js" defer&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;main class="calculator"&gt;
+        &lt;h2&gt;Simple Calculator&lt;/h2&gt;
+        &lt;label for="num1"&gt;First number&lt;/label&gt;
+        &lt;input type="number" id="num1" step="any" placeholder="Enter first number"&gt;
+        &lt;label for="num2"&gt;Second number&lt;/label&gt;
+        &lt;input type="number" id="num2" step="any" placeholder="Enter second number"&gt;
+
+        &lt;div class="buttons"&gt;
+            &lt;button type="button" onclick="calculate('add')"&gt;Addition&lt;/button&gt;
+            &lt;button type="button" onclick="calculate('subtract')"&gt;Subtraction&lt;/button&gt;
+            &lt;button type="button" onclick="calculate('multiply')"&gt;Multiplication&lt;/button&gt;
+            &lt;button type="button" onclick="calculate('divide')"&gt;Division&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;p id="result" role="status" aria-live="polite"&gt;Result: —&lt;/p&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+    
+SOURCE CODE END
+
+Copy the code between SOURCE CODE START and SOURCE CODE END into the file with the filename above.</description>
+    <onCompletion>Completed: Experiment_07_Calculator/index.html</onCompletion>
+  </item>
+  <item title="Experiment_07_Calculator — style.css">
+    <description>Experiment folder: Experiment_07_Calculator. File path from the experiment root: Experiment_07_Calculator/style.css. Language: css.
+
+Eclipse placement: Java files go under Java Resources &gt; src. For a classic Dynamic Web Project, web files go under WebContent and deployment descriptors under WebContent/WEB-INF. For Maven web projects, use src/main/webapp and src/main/webapp/WEB-INF.
+
+SOURCE CODE START
+body {
+    font-family: Arial, sans-serif;
+    background-color: lightblue;
+    text-align: center;
+    margin: 0;
+    padding: 24px;
+}
+
+.calculator {
+    box-sizing: border-box;
+    width: min(100%, 400px);
+    margin: 60px auto;
+    padding: 25px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+}
+
+input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#result {
+    margin-top: 20px;
+    overflow-wrap: anywhere;
+}
+    
+SOURCE CODE END
+
+Copy the code between SOURCE CODE START and SOURCE CODE END into the file with the filename above.</description>
+    <onCompletion>Completed: Experiment_07_Calculator/style.css</onCompletion>
+  </item>
+  <item title="Experiment_07_Calculator — script.js">
+    <description>Experiment folder: Experiment_07_Calculator. File path from the experiment root: Experiment_07_Calculator/script.js. Language: javascript.
+
+Eclipse placement: Java files go under Java Resources &gt; src. For a classic Dynamic Web Project, web files go under WebContent and deployment descriptors under WebContent/WEB-INF. For Maven web projects, use src/main/webapp and src/main/webapp/WEB-INF.
+
+SOURCE CODE START
+function calculate(operation) {
+    const firstInput = document.getElementById("num1").value;
+    const secondInput = document.getElementById("num2").value;
+    const resultElement = document.getElementById("result");
+
+    if (firstInput.trim() === "" || secondInput.trim() === "") {
+        resultElement.textContent = "Please enter both numbers.";
+        return;
+    }
+
+    const firstNumber = Number(firstInput);
+    const secondNumber = Number(secondInput);
+    let result;
+
+    switch (operation) {
+        case "add":
+            result = firstNumber + secondNumber;
+            break;
+        case "subtract":
+            result = firstNumber - secondNumber;
+            break;
+        case "multiply":
+            result = firstNumber * secondNumber;
+            break;
+        case "divide":
+            if (secondNumber === 0) {
+                resultElement.textContent = "Result: Cannot divide by zero.";
+                return;
+            }
+            result = firstNumber / secondNumber;
+            break;
+        default:
+            resultElement.textContent = "Unknown operation.";
+            return;
+    }
+
+    resultElement.textContent = "Result: " + result;
+}
+    
+SOURCE CODE END
+
+Copy the code between SOURCE CODE START and SOURCE CODE END into the file with the filename above.</description>
+    <onCompletion>Completed: Experiment_07_Calculator/script.js</onCompletion>
+  </item>
+  <item title="Experiment_08_EmailValidation — EmailValidation.html">
+    <description>Experiment folder: Experiment_08_EmailValidation. File path from the experiment root: Experiment_08_EmailValidation/EmailValidation.html. Language: html.
+
+Eclipse placement: Java files go under Java Resources &gt; src. For a classic Dynamic Web Project, web files go under WebContent and deployment descriptors under WebContent/WEB-INF. For Maven web projects, use src/main/webapp and src/main/webapp/WEB-INF.
+
+SOURCE CODE START
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Email Validation&lt;/title&gt;
+    &lt;script&gt;
+        function validateEmail(event) {
+            const emailInput = document.getElementById("email");
+            const email = emailInput.value.trim();
+
+            // As required by the experiment, check for both @ and .
+            if (email.indexOf("@") === -1 || email.indexOf(".") === -1) {
+                event.preventDefault();
+                alert("Invalid email address! Please re-enter your email.");
+                emailInput.value = "";
+                emailInput.focus();
+                return false;
+            }
+
+            alert("The email contains both @ and . characters.");
+            event.preventDefault();
+            return true;
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Email Validation&lt;/h2&gt;
+    &lt;form onsubmit="validateEmail(event)"&gt;
+        &lt;label for="email"&gt;Enter email address:&lt;/label&gt;
+        &lt;input type="text" id="email" name="email" required&gt;
+        &lt;button type="submit"&gt;Validate&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+    
+SOURCE CODE END
+
+Copy the code between SOURCE CODE START and SOURCE CODE END into the file with the filename above.</description>
+    <onCompletion>Completed: Experiment_08_EmailValidation/EmailValidation.html</onCompletion>
+  </item>
+  <item title="Experiment_09_ChangeBackgroundColor — ChangeBackgroundColor.html">
+    <description>Experiment folder: Experiment_09_ChangeBackgroundColor. File path from the experiment root: Experiment_09_ChangeBackgroundColor/ChangeBackgroundColor.html. Language: html.
+
+Eclipse placement: Java files go under Java Resources &gt; src. For a classic Dynamic Web Project, web files go under WebContent and deployment descriptors under WebContent/WEB-INF. For Maven web projects, use src/main/webapp and src/main/webapp/WEB-INF.
+
+SOURCE CODE START
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Change Background Color&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Background Color Changes Automatically&lt;/h2&gt;
+    &lt;p&gt;The background color will change every 5 seconds.&lt;/p&gt;
+
+    &lt;script&gt;
+        const colors = ["lightblue", "lightyellow", "lightpink", "lightgreen", "lavender"];
+        let colorIndex = 0;
+
+        function changeBackgroundColor() {
+            document.body.style.backgroundColor = colors[colorIndex];
+            colorIndex = (colorIndex + 1) % colors.length;
+        }
+
+        changeBackgroundColor();
+        setInterval(changeBackgroundColor, 5000);
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+    
+SOURCE CODE END
+
+Copy the code between SOURCE CODE START and SOURCE CODE END into the file with the filename above.</description>
+    <onCompletion>Completed: Experiment_09_ChangeBackgroundColor/ChangeBackgroundColor.html</onCompletion>
+  </item>
+</cheatsheet>
